@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
+    <ul>
+      <li v-for="(item,index) in  msg" :key="index" :style="{textAlign:(item.type==='1' ? 'right':'left')}">{{ item.msg }}</li>
+    </ul>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <my-from :model="inputData" :rules="rules" ref="form">
       <my-from-item label="用户名" prop="name">
@@ -23,6 +26,8 @@
 import myInput from "./components/myInput.vue";
 import myFromItem from "./components/myFromItem.vue";
 import myFrom from "./components/myFrom.vue";
+import io from 'socket.io-client';
+const socket = io('ws://localhost:9093');
 
 export default {
   name: "app",
@@ -33,6 +38,7 @@ export default {
   },
   data() {
     return {
+      msg:[],
       inputData: {
         name: "",
         pass: ""
@@ -43,8 +49,21 @@ export default {
       }
     };
   },
+  mounted() {
+    socket.on('sanmao',(data)=>{
+      console.log("sendMsgClient",data);
+      this.msg.push(data.obj)
+      console.log(this.msg)
+    })
+  },
   methods: {
     handleSubmit() {
+      let self = this;
+      let obj = {
+        msg:self.inputData.name,
+        type:self.inputData.pass
+      }
+      socket.emit("name",{obj})
       this.$refs.form.validate(valid => {
         if (valid) {
           window.alert("提交成功");
@@ -52,9 +71,11 @@ export default {
           window.alert("表单校验失败");
         }
       });
+      
     },
     handleRe() {
-      this.$refs.form.resite();
+      // this.$refs.form.resite();
+      
     },
     myInput() {}
   }
