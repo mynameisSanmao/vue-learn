@@ -13,6 +13,8 @@ const _filter = {
 Router.get('/list', function (req, res) {
   //清除所有用户
   // User.remove({},function(e,d){});
+
+
   const {
     type
   } = req.query.type ? req.query : {
@@ -30,7 +32,10 @@ Router.get('/list', function (req, res) {
 })
 //登录
 Router.post('/login', function (req, res) {
-  console.log("登录")
+  // res.json(
+  // {
+  //   data:0
+  // })
   const {
     user,
     pwd

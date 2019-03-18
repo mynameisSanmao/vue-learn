@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-let db = mongoose.connect('mongodb://localhost:27017/m-chat');
+let db = mongoose.connect('mongodb://localhost:27017/m-chat',{ useNewUrlParser: true });
 // mongoose.connection.on("connected",function(){
 //   console.log("mongo connect success")
 // })

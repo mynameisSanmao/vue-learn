@@ -9,8 +9,8 @@ const actions = {
     let {
       user,
       pwd
-    } = obj
-    axios.post('/mChat/login', {
+    } = obj;
+    axios.post('/api/mchat/login', {
       user,
       pwd
     }).then(res => {

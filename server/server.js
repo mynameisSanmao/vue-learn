@@ -17,7 +17,7 @@ io.on('connection', function (socket) {
 })
 const userRouter = require('./user');
 app.use(bodyParse.json());
-app.use('/mChat', userRouter);
+app.use('/mchat', userRouter);
 server.listen(9093, function () { //如果不连接socket server改成app
   console.log('Node app start at port 9093!!!!')
 })

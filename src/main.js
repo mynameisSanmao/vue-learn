@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store/index'
+import axios from "axios";
+// axios.baseURI = "http//:localhost:9093";
+// Vue.prototype.$http = axios;
 Vue.config.productionTip = false
 // 路由判断登录 根据路由配置文件的参数
 router.beforeEach((to, from, next) => {
