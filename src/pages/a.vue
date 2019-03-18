@@ -2,6 +2,8 @@
   <div>pageA</div>
 </template>
 <script>
-export default {};
+export default {
+  name: "A"
+};
 </script>
 

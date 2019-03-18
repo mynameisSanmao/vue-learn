@@ -1,13 +1,7 @@
 <template>
-  <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <ul>
-      <li
-        v-for="(item,index) in  msg"
-        :key="index"
-        :style="{textAlign:(item.type==='1' ? 'right':'left')}"
-      >{{ item.msg }}</li>
-    </ul>
+  <div>
+    <img alt="Vue logo" src="../assets/logo.png">
+
     <my-from :model="inputData" :rules="rules" ref="form">
       <my-from-item label="用户名" prop="name">
         <div>
@@ -21,20 +15,15 @@
       </my-from-item>
     </my-from>
     <button @click="handleSubmit">提交</button>
-    <button @click="handleRe">重置</button>-->
-    <router-view></router-view>
+    <button @click="handleRe">重置</button>
   </div>
 </template>
-
 <script>
-import myInput from "./components/myInput.vue";
-import myFromItem from "./components/myFromItem.vue";
-import myFrom from "./components/myFrom.vue";
-import io from "socket.io-client";
-const socket = io("ws://localhost:9093");
-
+import myInput from "./myInput.vue";
+import myFromItem from "./myFromItem.vue";
+import myFrom from "./myFrom.vue";
 export default {
-  name: "app",
+  name: "Login",
   components: {
     myInput,
     myFromItem,
@@ -42,7 +31,6 @@ export default {
   },
   data() {
     return {
-      msg: [],
       inputData: {
         name: "",
         pass: ""
@@ -53,21 +41,8 @@ export default {
       }
     };
   },
-  mounted() {
-    socket.on("sanmao", data => {
-      console.log("sendMsgClient", data);
-      this.msg.push(data.obj);
-      console.log(this.msg);
-    });
-  },
   methods: {
     handleSubmit() {
-      let self = this;
-      let obj = {
-        msg: self.inputData.name,
-        type: self.inputData.pass
-      };
-      socket.emit("name", { obj });
       this.$refs.form.validate(valid => {
         if (valid) {
           window.alert("提交成功");
@@ -75,6 +50,12 @@ export default {
           window.alert("表单校验失败");
         }
       });
+      let self = this;
+      let obj = {
+        user: self.inputData.name,
+        pwd: self.inputData.pass
+      };
+      this.$store.dispatch("login/login", obj);
     },
     handleRe() {
       // this.$refs.form.resite();
@@ -84,13 +65,3 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
