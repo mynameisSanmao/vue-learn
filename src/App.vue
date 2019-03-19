@@ -54,11 +54,11 @@ export default {
     };
   },
   mounted() {
-    socket.on("sanmao", data => {
-      console.log("sendMsgClient", data);
-      this.msg.push(data.obj);
-      console.log(this.msg);
-    });
+    // socket.on("sanmao", data => {
+    //   console.log("sendMsgClient", data);
+    //   this.msg.push(data.obj);
+    //   console.log(this.msg);
+    // });
   },
   methods: {
     handleSubmit() {
@@ -67,7 +67,7 @@ export default {
         msg: self.inputData.name,
         type: self.inputData.pass
       };
-      socket.emit("name", { obj });
+      // socket.emit("name", { obj });
       this.$refs.form.validate(valid => {
         if (valid) {
           window.alert("提交成功");
@@ -91,6 +91,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  background: #f8f8f8;
 }
 </style>

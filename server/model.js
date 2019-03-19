@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-let db = mongoose.connect('mongodb://localhost:27017/m-chat',{ useNewUrlParser: true });
-// mongoose.connection.on("connected",function(){
-//   console.log("mongo connect success")
-// })
+let db = mongoose.connect('mongodb://localhost:27017/m-chat', {
+  useNewUrlParser: true
+});
 
 const models = {
   user: {
@@ -10,7 +9,6 @@ const models = {
       'type': String,
       'require': true
     },
-    //加密后的密码
     'pwd': {
       'type': String,
       'require': true

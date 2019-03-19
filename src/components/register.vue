@@ -1,7 +1,6 @@
 <template>
   <div>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <p>M聊天室</p>
+    <p>M聊天室注册</p>
     <my-from :model="inputData" :rules="rules" ref="form">
       <my-from-item label="用户名" prop="name">
         <div>
@@ -14,7 +13,7 @@
         <my-input v-model="inputData.pass" type="password"></my-input>
       </my-from-item>
     </my-from>
-    <button @click="handleSubmit">登陆</button>
+    <button @click="handleSubmit">注册</button>
     <button @click="handleRe">重置</button>
   </div>
 </template>
@@ -23,7 +22,7 @@ import myInput from "./myInput.vue";
 import myFromItem from "./myFromItem.vue";
 import myFrom from "./myFrom.vue";
 export default {
-  name: "Login",
+  name: "Register",
   components: {
     myInput,
     myFromItem,
@@ -55,7 +54,7 @@ export default {
         user: self.inputData.name,
         pwd: self.inputData.pass
       };
-      this.$store.dispatch("user/login", obj);
+      this.$store.dispatch("user/register", obj);
     },
     handleRe() {
       // this.$refs.form.resite();
