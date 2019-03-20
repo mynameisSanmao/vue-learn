@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <input :type="type" :value="value" @input="onInput">
+  <div class="dib">
+    <input :type="type" :value="value" @input="onInput" class="text-input">
   </div>
 </template>
 <script>
@@ -28,6 +28,12 @@ export default {
 };
 </script>
 <style scoped>
+.text-input {
+  padding: 0;
+  padding-left: 5px;
+  height: 30px;
+  border-radius: 10px;
+}
 </style>
 
 

@@ -6,9 +6,15 @@ import css from './assets/css/main.css'
 import axios from "axios";
 // axios.baseURI = "http//:localhost:9093";
 // Vue.prototype.$http = axios;
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
+if (window.localStorage.getItem('isLogin')) {
+  router.push({
+    path: '/mChat'
+  })
+} else {}
 // 路由判断登录 根据路由配置文件的参数
 router.beforeEach((to, from, next) => {
+
   if (to.matched.some(record => record.meta.requireAuth)) { // 判断该路由是否需要登录权限
 
     var isLogin = false;
@@ -17,7 +23,7 @@ router.beforeEach((to, from, next) => {
     } else {
       isLogin = false;
     }
-    if (isLogin) { // 判断当前的token是否存在 ； 登录存入的token
+    if (isLogin) { // 判断当前是否登录
       next();
     } else {
       next({
@@ -25,7 +31,13 @@ router.beforeEach((to, from, next) => {
       })
     }
   } else {
-    next();
+    //登录之后 限制返回到登录页面和注册页面
+    if (window.localStorage.getItem('isLogin')) {
+      next(false);
+    } else {
+      next();
+    }
+
   }
 });
 new Vue({

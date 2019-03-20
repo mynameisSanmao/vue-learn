@@ -2,7 +2,7 @@
   <div>
     <header class="header-bar">
       <div class="head h-100">
-        <div class="fl">欢迎进入MChat！</div>
+        <div class="fl">欢迎进入M-Chat！</div>
         <div class="fr">
           <i class="dib user-name">{{ userInfo.user ? userInfo.user.substring(0,1) : ''}}</i>
           <i>{{userInfo.user}}</i>

@@ -1422,3 +1422,18 @@ html {
   box-shadow: 0 4px 5px 0 rgba(39, 178, 164, 0.22);
   cursor: pointer;
 }
+
+.btn-group>button {
+  width: 100px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #f5f7fc;
+  border-radius: 10px;
+  margin: 0 5px;
+  margin-bottom: 5px;
+}
+
+/* .btn-group>button:hover {
+  background-color: #f6f6f6;
+  transition: background-color 0.5s;
+} */

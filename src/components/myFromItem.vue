@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <label v-if="label">{{ label }}</label>
+  <div class="from-item">
+    <label v-if="label" class="dib text-label">{{ label }}：</label>
     <slot></slot>
     <p style="color:red;">{{ error }}</p>
   </div>
@@ -73,6 +73,12 @@ export default {
 };
 </script>
 <style scoped>
+.text-label {
+  width: 60px;
+}
+.from-item {
+  margin: 20px 0;
+}
 </style>
 
 

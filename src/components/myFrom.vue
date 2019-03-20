@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="head">
     <slot></slot>
   </form>
 </template>

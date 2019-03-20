@@ -27,9 +27,8 @@ const actions = {
       pwd
     }).then(res => {
       if (res.status == 200 && res.data.code == 0) {
-        // console.log(res, 'res')
-        alert(res.data.msg)
         router.push('/login');
+        alert(res.data.msg);
       } else {
         alert(res.data.msg)
       }
@@ -55,8 +54,8 @@ const actions = {
     }).then(res => {
       if (res.status == 200 && res.data.code == 0) {
         window.localStorage.setItem('isLogin', JSON.stringify(res.data.data));
-        router.push('/login');
-        alert('登陆成功！')
+        alert('登陆成功！');
+        router.push('/mChat/user/list');
       } else {
         alert(res.data.msg)
       }
@@ -116,7 +115,6 @@ const actions = {
     commit
   }, id) {
     socket.on('recvmsg', function (data) {
-      // console.log(data, 'data')
       commit('setChatmsg', data)
     })
   }
@@ -138,7 +136,6 @@ const mutations = {
   getChatmsg(state, data) {
     let arr = [];
     let chatId = [data.from_id, data.to_id].sort().join('_');
-    console.log(chatId, 'chatId')
     if (data.chatMsg && data.chatMsg.length) {
       arr = data.chatMsg.filter(item => {
         return item.chatid == chatId;
