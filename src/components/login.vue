@@ -13,13 +13,13 @@
         <my-input v-model="inputData.pass" type="password"></my-input>
       </my-from-item>
     </my-from>
-    <div class="btn-group">
+    <footer class="btn-group">
       <button @click="handleSubmit">登陆</button>
       <button @click="handleRe">重置</button>
-    </div>
-    <p>还没有账号？
-      <router-link to="/register">免费注册</router-link>
-    </p>
+      <p>还没有账号？
+        <router-link to="/register">免费注册</router-link>
+      </p>
+    </footer>
   </div>
 </template>
 <script>

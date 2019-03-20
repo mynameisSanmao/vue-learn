@@ -1,9 +1,11 @@
 <template>
   <div>
-    <!-- <h1>MChat注册</h1> -->
     <header class="head-title head pr">
       <div class="dib">M-Chat 注册</div>
-      <div class="has-account" @click="goLogin">已有账号？立即登录</div>
+
+      <div class="has-account">已有账号？
+        <router-link to="/login">立即登录</router-link>
+      </div>
     </header>
     <img alt="Vue logo" src="../assets/logo.png">
     <my-from :model="inputData" :rules="rules" ref="form">
@@ -17,10 +19,10 @@
         <my-input v-model="inputData.pass" type="password"></my-input>
       </my-from-item>
     </my-from>
-    <div class="btn-group">
+    <footer class="btn-group">
       <button @click="handleSubmit">注册</button>
       <button @click="handleRe">重置</button>
-    </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -68,11 +70,7 @@ export default {
     handleRe() {
       this.$refs.form.resite();
     },
-    myInput() {},
-    goLogin() {
-      const url = `/login`;
-      this.$router.push(url);
-    }
+    myInput() {}
   }
 };
 </script>
