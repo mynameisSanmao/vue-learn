@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+//连接mongoose，m-chat相当于数据库名
 let db = mongoose.connect('mongodb://localhost:27017/m-chat', {
   useNewUrlParser: true
 });
-
+//定义 模型和数据类型  user存放用户信息  chat存放聊天记录
 const models = {
   user: {
     'user': {

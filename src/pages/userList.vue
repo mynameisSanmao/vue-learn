@@ -37,7 +37,6 @@ export default {
   },
   methods: {
     goChatRoom(id, name) {
-      // const url = "/mChat/user/room/" + id;
       const url = `/mChat/user/room/${id}?name=${name}`;
       this.$router.push(url);
     }

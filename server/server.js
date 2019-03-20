@@ -4,9 +4,6 @@ const bodyParse = require('body-parser');
 const model = require('./model');
 const Chat = model.getModel('chat'); //聊天记录模型
 
-// app.get('/', function (req, res) {
-//   res.send('hello world')
-// })
 const server = require('http').Server(app)
 const io = require('socket.io')(server);
 io.on('connection', function (socket) {
@@ -29,7 +26,6 @@ io.on('connection', function (socket) {
       create_time,
       content: msg
     }, function (err, doc) {
-      console.log(doc, 'doc')
       io.emit('recvmsg', Object.assign({}, doc._doc))
     })
   })

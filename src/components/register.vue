@@ -2,7 +2,6 @@
   <div>
     <header class="head-title head pr">
       <div class="dib">M-Chat 注册</div>
-
       <div class="has-account">已有账号？
         <router-link to="/login">立即登录</router-link>
       </div>
@@ -10,9 +9,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <my-from :model="inputData" :rules="rules" ref="form">
       <my-from-item label="用户名" prop="name">
-        <!-- <div class="dib"> -->
         <my-input v-model="inputData.name" @input="myInput"></my-input>
-        <!-- </div> -->
       </my-from-item>
 
       <my-from-item label="密码" prop="pass">

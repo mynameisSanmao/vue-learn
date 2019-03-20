@@ -51,10 +51,7 @@ Router.get('/otherUser', function (req, res) {
 })
 //登录
 Router.post('/login', function (req, res) {
-  // res.json(
-  // {
-  //   data:0
-  // })
+ 
   const {
     user,
     pwd
@@ -69,8 +66,6 @@ Router.post('/login', function (req, res) {
         msg: '用户名或者密码错误'
       })
     }
-    //把登录用户id存在cookie
-    // res.cookie('userid', doc._id)
     return res.json({
       code: 0,
       data: doc
@@ -92,7 +87,6 @@ Router.post('/register', function (req, res) {
         msg: '用户名重复'
       })
     }
-    //密码使用md5加密 保存在数据库中
     const userModel = new User({
       user,
       pwd: pwd
@@ -108,7 +102,6 @@ Router.post('/register', function (req, res) {
         user,
         _id
       } = d;
-      // res.cookie('userid',_id);
       return res.json({
         code: 0,
         msg: '注册成功',
