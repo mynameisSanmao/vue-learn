@@ -8,7 +8,6 @@ const _filter = {
   '_v': 0
 };
 
-
 //获取所有用户
 Router.get('/list', function (req, res) {
   //清除所有用户
@@ -30,8 +29,6 @@ Router.get('/list', function (req, res) {
 })
 //获取除自己以外的用户
 Router.get('/otherUser', function (req, res) {
-  //清除所有用户
-  // User.remove({},function(e,d){});
   const {
     id
   } = req.query.id ? req.query : {
@@ -51,7 +48,6 @@ Router.get('/otherUser', function (req, res) {
 })
 //登录
 Router.post('/login', function (req, res) {
- 
   const {
     user,
     pwd
@@ -141,10 +137,7 @@ Router.get('/getmsglist', function (req, res) {
           users: users
         })
       }
-
     })
   })
-
 })
-
 module.exports = Router
