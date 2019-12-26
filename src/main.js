@@ -6,6 +6,8 @@ import css from './assets/css/main.css'
 import axios from "axios";
 // axios.baseURI = "http//:localhost:9093";
 // Vue.prototype.$http = axios;
+
+console.log(process.env, 'process.env')
 Vue.config.productionTip = false;
 if (window.localStorage.getItem('isLogin')) {
   router.push({
